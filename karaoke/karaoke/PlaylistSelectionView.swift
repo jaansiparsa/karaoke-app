@@ -13,7 +13,8 @@ struct PlaylistSelectionView: View {
     let playlists: [Playlist] = [
         Playlist(id: "6j4w1woXd7xzGCNQoKrpY9", name: "white girl music"),
         Playlist(id: "6OJBQs9vWu8K8QFQlGm877", name: "disney bangers"),
-        Playlist(id: "2wcz0IZbXv2kad6dZRfgbt", name: "gen z nostalgia")
+        Playlist(id: "2wcz0IZbXv2kad6dZRfgbt", name: "gen z nostalgia"),
+        Playlist(id: "0il43bTU2T9ZfBo1pCBJjY", name: "bollywood party")
     ]
     
     let clientID = "2f4d9fb7524049aa8c72d1c508bb341d"
