@@ -5,26 +5,29 @@ struct Playlist: Identifiable {
     let name: String
 }
 
+struct GameRoute: Hashable {
+    let tracks: [String]
+}
+
 struct PlaylistSelectionView: View {
     let playlists: [Playlist] = [
         Playlist(id: "6j4w1woXd7xzGCNQoKrpY9", name: "white girl music"),
-        Playlist(id: "6OJBQs9vWu8K8QFQlGm877", name: "disney"),
-        Playlist(id: "2wcz0IZbXv2kad6dZRfgbt", name: "gen z")
-        // add your other playlists here
+        Playlist(id: "6OJBQs9vWu8K8QFQlGm877", name: "disney bangers"),
+        Playlist(id: "2wcz0IZbXv2kad6dZRfgbt", name: "gen z nostalgia")
     ]
     
-    // Your Spotify app credentials
     let clientID = "2f4d9fb7524049aa8c72d1c508bb341d"
     let clientSecret = "01fb38f54afd42f2b73cebf3e64f97eb"
     
-    // Two-column grid layout
+    @State private var gameRoute: GameRoute? = nil
+    
     let columns = [
         GridItem(.flexible(), spacing: 16),
         GridItem(.flexible(), spacing: 16)
     ]
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 16) {
                     ForEach(playlists) { playlist in
@@ -33,8 +36,7 @@ struct PlaylistSelectionView: View {
                                 do {
                                     let token = try await SpotifyAPI.fetchSpotifyAccessToken(clientID: clientID, clientSecret: clientSecret)
                                     let tracks = try await SpotifyAPI.fetchPlaylistTracks(playlistID: playlist.id, accessToken: token)
-                                    // print("Playlist: \(playlist.name)")
-                                    tracks.forEach { print("• \($0)") }
+                                    self.gameRoute = GameRoute(tracks: tracks.shuffled())
                                 } catch {
                                     print("Error fetching tracks: \(error)")
                                 }
@@ -52,8 +54,9 @@ struct PlaylistSelectionView: View {
                 .padding()
             }
             .navigationTitle("Choose a Playlist")
+            .navigationDestination(item: $gameRoute) { route in
+                GameView(tracks: route.tracks)
+            }
         }
     }
 }
-
-// Include the fetchSpotifyAccessToken and fetchPlaylistTracks functions here (or in a helper file)
