@@ -30,6 +30,7 @@ struct PlaylistSelectionView: View {
     @Binding var path: NavigationPath
     @State private var userPlaylistLink: String = ""
     @State private var isFetchingUserPlaylist = false
+    @State private var isFetchingPlaylist = false
 
     let playlists: [Playlist] = [
         Playlist(id: "0il43bTU2T9ZfBo1pCBJjY", name: "Summer Vibes",    subtitle: "24 Tracks • Sunny Days",   imageName: "BeachPenguin"),
@@ -90,6 +91,8 @@ struct PlaylistSelectionView: View {
 
     private func playlistCard(playlist: Playlist) -> some View {
         Button {
+            guard !isFetchingPlaylist else { return }
+            isFetchingPlaylist = true
             Task {
                 do {
                     let token = try await SpotifyAPI.fetchSpotifyAccessToken(
@@ -104,6 +107,7 @@ struct PlaylistSelectionView: View {
                 } catch {
                     print("Error fetching tracks: \(error)")
                 }
+                isFetchingPlaylist = false
             }
         } label: {
             VStack(alignment: .leading, spacing: 12) {

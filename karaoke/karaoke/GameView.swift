@@ -107,6 +107,7 @@ struct GameView: View {
                 }
             }
         }
+        .navigationBarBackButtonHidden(true)
         .onAppear {
             guesses = tracks.map { SongGuess(track: $0) }
             startCountdown()
