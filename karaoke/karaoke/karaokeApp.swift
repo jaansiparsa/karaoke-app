@@ -8,10 +8,16 @@
 import SwiftUI
 
 @main
-struct karaokeApp: App {
-    var body: some Scene {
-        WindowGroup {
-            PlaylistSelectionView()
+struct KaraokeApp: App {
+    
+
+    @State private var path = NavigationPath()
+
+        var body: some Scene {
+            WindowGroup {
+                NavigationStack(path: $path) {
+                    PlaylistSelectionView(path: $path)
+                }
+            }
         }
-    }
 }

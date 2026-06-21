@@ -29,9 +29,22 @@
 		2E124EAA2E122C6500C2C5FD /* karaokeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = karaokeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		2E618D6D2E2478D400793BCB /* Exceptions for "karaoke" folder in "karaoke" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 2E124E922E122C6300C2C5FD /* karaoke */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		2E124E952E122C6300C2C5FD /* karaoke */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				2E618D6D2E2478D400793BCB /* Exceptions for "karaoke" folder in "karaoke" target */,
+			);
 			path = karaoke;
 			sourceTree = "<group>";
 		};
@@ -399,7 +412,7 @@
 				DEVELOPMENT_TEAM = MS4QWA7N48;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "";
+				INFOPLIST_FILE = karaoke/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -431,7 +444,7 @@
 				DEVELOPMENT_TEAM = MS4QWA7N48;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "";
+				INFOPLIST_FILE = karaoke/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

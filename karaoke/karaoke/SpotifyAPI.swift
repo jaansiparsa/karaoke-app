@@ -59,7 +59,6 @@ class SpotifyAPI {
             
             let (data, response) = try await URLSession.shared.data(for: request)
             if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode != 200 {
-                let body = String(data: data, encoding: .utf8) ?? "No body"
                 // print("Status code: \(httpResponse.statusCode)")
                 // print("Response body: \(body)")
                 // Try to parse error message
